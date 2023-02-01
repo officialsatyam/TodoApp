@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDo List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+   <link rel="stylesheet" href="./static/style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <svg class="bi bi-card-checklist" width="3em" height="3em" filter=invert(100%) viewBox="0 0 16 16" fill="color"
+      xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd"
+        d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+      <path fill-rule="evenodd"
+        d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
+      </svg>
+    <div class="sub">
+      <a href="/create"><button id="CREATE" class="btn btn-outline-success"> CREATE </button></a>
+      <a href="/show"><button id="VIEW" class="btn btn-outline-warning"> VIEW </button></a>
+    </div>
+    </div>
+  </nav>
+  <!-- <section class="head">
+            <div class="cont">
+             <h1>CREATE YOUR TODO LIST</h1>
+             <button class="btn btn-success">CREATE</button>
+            </div>
+          </section>-->
+  <div class="jumbotron">
+    <div style="font-family: Georgia, 'Times New Roman', Times, serif;">
+    <h1 class="display-4">TODO, APP!</h1>
+    <p class="lead">Is Course Me Request Module ka use karke aap, server pe data create karna , delete karna, edit karna aur data fetch karna seekhenge. Is Course me hum ek cli todo app banayenge.</p>
+  <p>
+    <a class="btn btn-primary bttn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      SEE TASKS
+    </a>
+  </p>
+</div>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body" style="background-color: transparent; border: transparent;">
+      <div style="font-family: Georgia, 'Times New Roman', Times, serif;">
+      <ol type="numbered">
+        <li>Sabse Pahle Hum Users Se Input Leke Puchenge Ki User Kya Karna Chahta Hai, Naya TODO Likhan Chahta hai, Ya Phir Pichle Likhe Huye TODO Dekhna Chahta Hai, Delete Karna Chahta hai Ya Phir Likhe Huye Kisi Purane Todo Me Changes Karna Chahta Hai. Aap Users Se Input Kuch Is Tarah Se le ki aapko pta ho ki aapko kya karna hai. </li>
+        <li>Todo Fetch Karne ke liye Aapko ye <b>GET</b> <a href="https://learntodo.cyclic.app/show?type=json" target="_blank">api</a> call karni hai. Agar todo hai to terminal pe list wise print karna hai. Aur agar nhi hai to user ko bolo ki aapke paas koi todo nhi hai pahle create kare fir fetch kare.</li>
+        <li>Agar User naya todo likhna chahta hai toh aapko user se 3 input aur lena hai jisme aap user se uska naam, aaj ka din , aur kya task vo likhna chahta ye sara data aapko as a json is <b>POST</b> <a href="https://learntodo.cyclic.app/create?type=json" target="_blank">api</a> ke body me send karna hai data format ```{"name": "Sam", "day": "Wednesday", "task": "Today I will complete first task"}``` aisa hoga. Agar aapko server se status 201 mile toh iska matlb todo create ho gya hai. Ye baat aapko user ko btana hai terminal pe print karke. NOTE: <h6>POST api kaise call karte hai nodejs me request module use karke ye internet pe search</h6></li>
+        <li>Agar User todo delete karna chaahta hai to pahle aapko todo fetch karke terminal pe print krke user ko dikana hai uske baad user se input leke puchna hai ki vo konsa todo delete karna chaahta hai uske corresponding aapko todo ki id nikalni hai aur ye id aapko is <b>DELETE</b> https://learntodo.cyclic.app/delete/{todoId} api me daal kar call karna hai aur agar response me 200 aata hai toh aapko terminal pe todo delete ho gya print krke user ko inform karna hai.</li>
+        <li>Last But Not Least::::Existing todo ko yadi user edit karna chahta hai to aapko usko waapi todo fetch krke print krke user se input leke puchna hai vo konsa todo edit karn chaahta hai aur uske correspondig todo ki id nikal leni aur fir user se 3 input lena hai name, day aur task is data ko aapko kuch is tarah body me bhejna hai ```{"_id": "selectedid", "name": "Sam", "day": "Wednesday", "task": "Today I will complete first task"}``` is <b>PUT</b> https://learntodo.cyclic.app/edit api me. yadi response me 200 aaye to aapko terminal par todo update ho gya print krke user ko inform krna hai. </li>
+        <li>Hurray You Have Completed This Course. You have a fully fledged CLI todo app. You can Add this in your resume.</li>
+    </ol>
+    </div>
+    </div>
+  </div>
+</div>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+</html>
